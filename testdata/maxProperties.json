@@ -1,0 +1,65 @@
+[
+    {
+        "description": "a json schema that accepts only json objects that contain at most 3 properties, if the inspected value is an object",
+        "path": "/v1/maxProperties",
+        "method": "GET",
+        "schema": {
+            "maxProperties": 3
+        },
+        "tests": [
+            {
+                "description": "an empty json object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 2 properties",
+                "data": {
+                    "a": 1,
+                    "b": 2
+                },
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 1 property",
+                "data": {
+                    "a": 1
+                },
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 3 properties",
+                "data": {
+                    "a": 1,
+                    "b": 2,
+                    "c": 3
+                },
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a string",
+                "data": "string",
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 4,
+                "valid": true
+            },
+            {
+                "description": "an array with 3 items",
+                "data": [
+                    1,
+                    2,
+                    3
+                ],
+                "valid": true
+            }
+        ]
+    }
+]

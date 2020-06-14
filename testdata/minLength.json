@@ -1,0 +1,98 @@
+[
+    {
+        "description": "a json schema that accepts only strings with 4 characters or more",
+        "path": "/v1/minLength",
+        "method": "GET",
+        "schema": {
+            "type": "string",
+            "minLength": 4
+        },
+        "tests": [
+            {
+                "description": "a string with 4 characters",
+                "data": "abcd",
+                "valid": true
+            },
+            {
+                "description": "a string with more than 4 characters",
+                "data": "abcde",
+                "valid": true
+            },
+            {
+                "description": "a string with less than 4 characters",
+                "data": "abc",
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "a 4 digit integer",
+                "data": 4444,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only strings with 4 characters or more, if the inspected value is a string",
+        "path": "/v1/minLength",
+        "method": "GET",
+        "schema": {
+            "minLength": 4
+        },
+        "tests": [
+            {
+                "description": "a string with 4 characters",
+                "data": "abcd",
+                "valid": true
+            },
+            {
+                "description": "a string with more than 4 characters",
+                "data": "abcde",
+                "valid": true
+            },
+            {
+                "description": "a string with more less 4 characters",
+                "data": "abc",
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "a 4 digit integer",
+                "data": 4444,
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"a": true},
+                "valid": true
+            },
+            {
+                "description": "a json array",
+                "data": ["a", "b", 5],
+                "valid": true
+            },
+            {
+                "description": "a json number",
+                "data": 5.6,
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    }
+]

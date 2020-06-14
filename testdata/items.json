@@ -1,0 +1,287 @@
+[
+    {
+        "description": "a json schema that accepts arrays that contains 3 character strings only, if the inspected value is an array",
+        "path": "/v1/items",
+        "method": "GET",
+        "schema": {
+            "items": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3
+            }
+        },
+        "tests": [
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": true
+            },
+            {
+                "description": "an array that contains empty string",
+                "data": [
+                    ""
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains 3 character strings only",
+                "data": [
+                    "aaa",
+                    "bbb",
+                    "bbb",
+                    "ccc",
+                    "abc"
+                ],
+                "valid": true
+            },
+            {
+                "description": "an array that contains 3 character strings and 4 character strings",
+                "data": [
+                    "aaa",
+                    "bbb",
+                    "bbb",
+                    "cccc",
+                    "abcd"
+                ],
+                "valid": false
+            },
+            {
+                "description": "a 6 character string",
+                "data": "blabla",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts arrays each of their items described by another schema, if the inspected value is an array",
+        "path": "/v1/items",
+        "method": "GET",
+        "schema": {
+            "items": [
+                {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                },
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "tests": [
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "an array that contains empty string",
+                "data": [
+                    ""
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains 3 character strings only",
+                "data": [
+                    "aaa",
+                    "bbb",
+                    "bbb",
+                    "ccc",
+                    "abc"
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains 3 character strings and 4 character strings",
+                "data": [
+                    "aaa",
+                    "bbb",
+                    "bbb",
+                    "cccc",
+                    "abcd"
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 0",
+                "data": [
+                    "aaaa",
+                    12,
+                    null
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 1",
+                "data": [
+                    "aaa",
+                    true,
+                    null
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 2",
+                "data": [
+                    "aaa",
+                    12,
+                    12
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains two valid items",
+                "data": [
+                    "aaa",
+                    12
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains two invalid items",
+                "data": [
+                    "aaaa",
+                    "12"
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains four valid items",
+                "data": [
+                    "aaa",
+                    12,
+                    null,
+                    true
+                ],
+                "valid": true
+            },
+            {
+                "description": "a valid array",
+                "data": [
+                    "aaa",
+                    12,
+                    null
+                ],
+                "valid": true
+            },
+            {
+                "description": "a 6 character string",
+                "data": "blabla",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts arrays each of their items described by another schema, if the inspected value is an array",
+        "path": "/v1/items",
+        "method": "GET",
+        "schema": {
+            "items": [
+                {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                },
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
+        },
+        "tests": [
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 0",
+                "data": [
+                    "aaaa",
+                    12,
+                    false
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 1",
+                "data": [
+                    "aaa",
+                    true,
+                    false
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains invalid item at index 2",
+                "data": [
+                    "aaa",
+                    12,
+                    12
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains two valid items",
+                "data": [
+                    "aaa",
+                    12
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains two invalid items",
+                "data": [
+                    "aaaa",
+                    "12"
+                ],
+                "valid": false
+            },
+            {
+                "description": "an array that contains four valid items",
+                "data": [
+                    "aaa",
+                    12,
+                    false,
+                    true
+                ],
+                "valid": true
+            },
+            {
+                "description": "a valid array",
+                "data": [
+                    "aaa",
+                    12,
+                    false
+                ],
+                "valid": true
+            },
+            {
+                "description": "a 6 character string",
+                "data": "blabla",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    }
+]

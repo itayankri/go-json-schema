@@ -1,0 +1,65 @@
+[
+    {
+        "description": "a json schema that contains 2 schema instanced in 'oneOf' field",
+        "path": "/v1/oneOf",
+        "method": "GET",
+        "schema": {
+            "type": "string",
+            "oneOf": [
+                {
+                    "minLength": 3
+                },
+                {
+                    "maxLength": 5
+                }
+            ]
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a 2 character string",
+                "data": "12",
+                "valid": true
+            },
+            {
+                "description": "a 3 character string",
+                "data": "123",
+                "valid": false
+            },
+            {
+                "description": "a 4 character string",
+                "data": "1235",
+                "valid": false
+            },
+            {
+                "description": "a 5 character string",
+                "data": "12345",
+                "valid": false
+            },
+            {
+                "description": "a 6 character string",
+                "data": "123456",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": true
+            },
+            {
+                "description": "a 3 digits number",
+                "data": 999,
+                "valid": false
+            }
+        ]
+    }
+]

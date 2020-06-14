@@ -1,0 +1,317 @@
+[
+    {
+        "description": "a json schema that accepts any json string",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "string"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": false
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts any json number (float and integer)",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "number"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": false
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": true
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": true
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts any json integer",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "integer"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": false
+            },
+            {
+                "description": "a json float",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": true
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts json boolean",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "boolean"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": false
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": false
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": true
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts any json object",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "object"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": true
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": false
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": false
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts any json array",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "array"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": true
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": false
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts json null",
+        "path": "/v1/type",
+        "method": "GET",
+        "schema": {
+            "type": "null"
+        },
+        "tests": [
+            {
+                "description": "a json string",
+                "data": "test string",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": [2, "k"],
+                "valid": false
+            },
+            {
+                "description": "a json number",
+                "data": 4.4,
+                "valid": false
+            },
+            {
+                "description": "a json integer",
+                "data": 8,
+                "valid": false
+            },
+            {
+                "description": "a json boolean",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "a json null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    }
+]

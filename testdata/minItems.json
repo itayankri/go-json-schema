@@ -1,0 +1,54 @@
+[
+    {
+        "description": "a json schema that accepts only json arrays that contain at least 2 items, if the inspected value is an array",
+        "path": "/v1/minItems",
+        "method": "GET",
+        "schema": {
+            "minItems": 2
+        },
+        "tests": [
+            {
+                "description": "an empty json array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "a json array that contains 2 items",
+                "data": [1, 2],
+                "valid": true
+            },
+            {
+                "description": "a json array that contains 1 item",
+                "data": [1],
+                "valid": false
+            },
+            {
+                "description": "a json array that contains 3 items",
+                "data": [1, 2, 3],
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a string",
+                "data": "string",
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 4,
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 1 property",
+                "data": {
+                    "A": 1
+                },
+                "valid": true
+            }
+        ]
+    }
+]

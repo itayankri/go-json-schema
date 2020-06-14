@@ -1,0 +1,47 @@
+[
+    {
+        "description": "a json schema that accepts only arrays that contains the string \"CAF\", if the inspected value is an array",
+        "path": "/v1/maximum",
+        "method": "GET",
+        "schema": {
+            "contains": {"const": "CAF"}
+        },
+        "tests": [
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "an array that contains the string \"CAF\"",
+                "data": ["CAF", 3, true, ""],
+                "valid": true
+            },
+            {
+                "description": "an array that contains the string \"caf\"",
+                "data": ["caf", 3, true, ""],
+                "valid": false
+            },
+            {
+                "description": "an array that does not contain the string \"CAF\"",
+                "data": ["CAFCAF", "C", "A", "F"],
+                "valid": false
+            },
+            {
+                "description": "the string \"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "an object that does not contain a property called \"CAF\"",
+                "data": {"a": "CAF"},
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    }
+]

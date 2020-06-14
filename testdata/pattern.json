@@ -1,0 +1,92 @@
+[
+    {
+        "description": "a json schema that accepts a string, only if it matches the pattern ^CA+F$",
+        "path": "/v1/pattern",
+        "method": "GET",
+        "schema": {
+            "pattern": "^CA+F$"
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a valid string \"CAF\"",
+                "data": "CAF",
+                "valid": true
+            },
+            {
+                "description": "a valid string \"CAAAF\"",
+                "data": "CAAAF",
+                "valid": true
+            },
+            {
+                "description": "a valid string \"CAAAAAF\"",
+                "data": "CAAAAAF",
+                "valid": true
+            },
+            {
+                "description": "an invalid string \"CAaF\"",
+                "data": "CAaF",
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "the boolean \"false\"",
+                "data": false,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts a simple North American telephone number with an optional area code",
+        "path": "/v1/pattern",
+        "method": "GET",
+        "schema": {
+            "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a valid North American telephone number",
+                "data": "555-1212",
+                "valid": true
+            },
+            {
+                "description": "a valid North American telephone number with area code",
+                "data": "(888)555-1212",
+                "valid": true
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "the boolean \"false\"",
+                "data": false,
+                "valid": true
+            }
+        ]
+    }
+]

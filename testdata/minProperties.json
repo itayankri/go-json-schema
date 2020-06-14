@@ -1,0 +1,65 @@
+[
+    {
+        "description": "a json schema that accepts only json objects that contain at least 2 properties, if the inspected value is a number",
+        "path": "/v1/minProperties",
+        "method": "GET",
+        "schema": {
+            "minProperties": 2
+        },
+        "tests": [
+            {
+                "description": "an empty json object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "a json object that contains 2 properties",
+                "data": {
+                    "a": 1,
+                    "b": 2
+                },
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 1 property",
+                "data": {
+                    "a": 1
+                },
+                "valid": false
+            },
+            {
+                "description": "a json object that contains 3 properties",
+                "data": {
+                    "a": 1,
+                    "b": 2,
+                    "c": 3
+                },
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a string",
+                "data": "string",
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 4,
+                "valid": true
+            },
+            {
+                "description": "an array with 3 items",
+                "data": [
+                    1,
+                    2,
+                    3
+                ],
+                "valid": true
+            }
+        ]
+    }
+]

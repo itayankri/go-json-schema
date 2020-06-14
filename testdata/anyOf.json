@@ -1,0 +1,52 @@
+[
+    {
+        "description": "a json schema that contains 3 schema instanced in 'anyOf' field",
+        "path": "/v1/anyOf",
+        "method": "GET",
+        "schema": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a json string",
+                "data": "aaaa",
+                "valid": true
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": true
+            },
+            {
+                "description": "the number 100",
+                "data": 100,
+                "valid": true
+            },
+            {
+                "description": "an object, which is not valid against any schema",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "an array, which is not valid against any schema",
+                "data": {},
+                "valid": false
+            }
+        ]
+    }
+]

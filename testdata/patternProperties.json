@@ -1,0 +1,64 @@
+[
+    {
+        "description": "a json schema that validates object's properties that matches the regex ^M or ^F*B",
+        "path": "/v1/properties",
+        "method": "GET",
+        "schema": {
+            "patternProperties": {
+                "^M": {
+                    "type": "string"
+                },
+                "^FC*B": {
+                    "type": "number"
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "an object that contains a property called 'MTA' which is a string",
+                "data": {"MTA": "bla"},
+                "valid": true
+            },
+            {
+                "description": "an object that contains a property called 'FCB' which is a number",
+                "data": {"FCB": 4.56},
+                "valid": true
+            },
+            {
+                "description": "an object that contains both properties but one of them is not valid against it's schema",
+                "data": {"MTA": 4, "FCB": 5},
+                "valid": false
+            },
+            {
+                "description": "an object that contains both properties and they are both valid against their schema",
+                "data": {"MTA": "4", "FCB": 5},
+                "valid": true
+            },
+            {
+                "description": "an object that contains both properties and one of them is not valid against its schema",
+                "data": {"MTA": "4", "FCB": "5"},
+                "valid": false
+            },
+            {
+                "description": "an object that contains two properties that match the same pattern and one of them is not valid",
+                "data": {"MTA": "4", "FCB": 5, "FCCB": true},
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            }
+        ]
+    }
+]

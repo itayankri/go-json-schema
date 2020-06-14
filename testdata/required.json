@@ -1,0 +1,103 @@
+[
+    {
+        "description": "a json schema that accepts only objects that contain a property called \"CAF\", if the inspected value is an object",
+        "path": "/v1/required",
+        "method": "GET",
+        "schema": {
+            "required": ["CAF"]
+        },
+        "tests": [
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "an object that contains only one property, called \"CAF\"",
+                "data": {"CAF": true},
+                "valid": true
+            },
+            {
+                "description": "an object that contains a property called \"CAF\" and more properties",
+                "data": {"CAF": false, "a": true},
+                "valid": true
+            },
+            {
+                "description": "an object that that does not contain a property called \"CAF\"",
+                "data": {"a": true},
+                "valid": false
+            },
+            {
+                "description": "the string \"CAF\"",
+                "data": "CAF",
+                "valid": true
+            },
+            {
+                "description": "an array that contains the string \"CAF\"",
+                "data": ["CAF"],
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only objects that contain the properties \"CAF\" and \"Itay\"",
+        "path": "/v1/required",
+        "method": "GET",
+        "schema": {
+            "type": "object",
+            "required": ["CAF", "Itay"]
+        },
+        "tests": [
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "an object that contains only one property, called \"CAF\"",
+                "data": {"CAF": true},
+                "valid": false
+            },
+            {
+                "description": "an object that contains only one property, called \"Itay\"",
+                "data": {"Itay": true},
+                "valid": false
+            },
+            {
+                "description": "an object that contains the properties \"CAF\" and \"Itay\"",
+                "data": {"CAF": false, "Itay": true},
+                "valid": true
+            },
+            {
+                "description": "an object that contains a property called \"CAF\" and more properties",
+                "data": {"CAF": false, "a": true},
+                "valid": false
+            },
+            {
+                "description": "an object that that does not contain a property called \"CAF\"",
+                "data": {"a": true},
+                "valid": false
+            },
+            {
+                "description": "the string \"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "an array that contains the string \"CAF\"",
+                "data": ["CAF"],
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    }
+]

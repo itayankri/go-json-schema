@@ -1,0 +1,154 @@
+[
+    {
+        "description": "a json schema that contains 'if' without 'then' and 'else'",
+        "path": "/v1/keyword",
+        "method": "GET",
+        "schema": {
+            "if": {
+                "type": "string"
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"A": true},
+                "valid": true
+            },
+            {
+                "description": "a json array",
+                "data": ["A"],
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 100,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains 'if' and 'then' without 'else'",
+        "path": "/v1/keyword",
+        "method": "GET",
+        "schema": {
+            "if": {
+                "type": "string"
+            },
+            "then": true
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"A": true},
+                "valid": true
+            },
+            {
+                "description": "a json array",
+                "data": ["A"],
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 100,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains 'if' and 'else' without 'then'",
+        "path": "/v1/keyword",
+        "method": "GET",
+        "schema": {
+            "if": {
+                "type": "string"
+            },
+            "else": false
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"A": true},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": ["A"],
+                "valid": false
+            },
+            {
+                "description": "a number",
+                "data": 100,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains 'if', 'then' and 'else'",
+        "path": "/v1/if",
+        "method": "GET",
+        "schema": {
+            "if": {
+                "type": "string"
+            },
+            "then": true,
+            "else": false
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"A": true},
+                "valid": false
+            },
+            {
+                "description": "a json array",
+                "data": ["A"],
+                "valid": false
+            },
+            {
+                "description": "a number",
+                "data": 100,
+                "valid": false
+            }
+        ]
+    }
+]

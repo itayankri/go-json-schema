@@ -1,0 +1,122 @@
+[
+    {
+        "description": "a json schema that accepts only empty object or true",
+        "path": "/v1/enum",
+        "method": "GET",
+        "schema": {
+            "enum": [{}, true]
+        },
+        "tests": [
+            {
+                "description": "an empty json object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "json boolean \"true\"",
+                "data": true,
+                "valid": true
+            },
+            {
+                "description": "json boolean \"false\"",
+                "data": false,
+                "valid": false
+            },
+            {
+                "description": "a non-empty json object",
+                "data": {"a": 4},
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only standard http methods",
+        "path": "/v1/enum",
+        "method": "GET",
+        "schema": {
+            "enum": ["GET", "POST", "DELETE", "PUT", "PATCH", "OPTIONS", "CONNECT", "UPGRADE"]
+        },
+        "tests": [
+            {
+                "description": "a non-standard http method",
+                "data": "DELIVER",
+                "valid": false
+            },
+            {
+                "description": "a valid http method POST",
+                "data": "POST",
+                "valid": true
+            },
+            {
+                "description": "a valid http method OPTIONS",
+                "data": "OPTIONS",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "json array that contains valid http methods",
+                "data": ["GET", "PATCH"],
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains enum with all json types",
+        "path": "/v1/enum",
+        "method": "GET",
+        "schema": {
+            "enum": ["string", 4, true, 5.5, null, {"a": true}, [true, 4, 16, "name"]]
+        },
+        "tests": [
+            {
+                "description": "a string that is present in the enum array",
+                "data": "string",
+                "valid": true
+            },
+            {
+                "description": "an integer that is present in the enum array",
+                "data": 4,
+                "valid": true
+            },
+            {
+                "description": "a boolean that is present in the enum array",
+                "data": true,
+                "valid": true
+            },
+            {
+                "description": "a number that is present in the enum array",
+                "data": 5.5,
+                "valid": true
+            },
+            {
+                "description": "null (which is present in the enum array)",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "an object that is present in the enum array",
+                "data": {"a": true},
+                "valid": true
+            },
+            {
+                "description": "an array that is present in the enum array",
+                "data": [true, 4, 16, "name"],
+                "valid": true
+            },
+            {
+                "description": "a value that is not present in the enum array",
+                "data": 234243,
+                "valid": false
+            }
+        ]
+    }
+]

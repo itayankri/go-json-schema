@@ -1,0 +1,57 @@
+[
+    {
+        "description": "a json schema that accepts only numbers that are greater than 10, if the inspected value is a number",
+        "path": "/v1/exclusiveMinimum",
+        "method": "GET",
+        "schema": {
+            "exclusiveMinimum": 10
+        },
+        "tests": [
+            {
+                "description": "a float that is greater than 10",
+                "data": 10.1,
+                "valid": true
+            },
+            {
+                "description": "an integer that is greater than 10",
+                "data": 12,
+                "valid": true
+            },
+            {
+                "description": "exactly the specified exclusiveMinimum as integer",
+                "data": 10,
+                "valid": false
+            },
+            {
+                "description": "exactly the specified exclusiveMinimum as float",
+                "data": 10.0,
+                "valid": false
+            },
+            {
+                "description": "a float that is less than 10",
+                "data": 9.45,
+                "valid": false
+            },
+            {
+                "description": "an integer that is less than 10",
+                "data": 4,
+                "valid": false
+            },
+            {
+                "description": "a stringified number",
+                "data": "10",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json object",
+                "data": {"a": true},
+                "valid": true
+            }
+        ]
+    }
+]

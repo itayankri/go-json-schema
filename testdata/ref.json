@@ -1,0 +1,143 @@
+[
+    {
+        "description": "a json schema that contains local reference that points to the root schema",
+        "path": "/v1/ref/1",
+        "method": "GET",
+        "schema": {
+            "$id": "ref1",
+            "type": "object",
+            "properties": {
+                "a": {
+                    "$ref": "#"
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a valid object",
+                "data": {
+                    "a": {
+                        "a": {
+                            "a": {
+                                "b": true
+                            }
+                        }
+                    }
+                },
+                "valid": true
+            },
+            {
+                "description": "an invalid object",
+                "data": {
+                    "a": {
+                        "a": {
+                            "a": true
+                        }
+                    }
+                },
+                "valid": false
+            },
+            {
+                "description": "an invalid object",
+                "data": {
+                    "a": {
+                        "a": {
+                            "a": null
+                        }
+                    }
+                },
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains local reference that points to a sub schema",
+        "path": "/v1/ref/2",
+        "method": "GET",
+        "schema": {
+            "$id": "ref2",
+            "type": "object",
+            "definitions": {
+                "threeCharacterString": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                }
+            },
+            "properties": {
+                "a": {
+                    "$ref": "#/definitions/threeCharacterString"
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a valid object",
+                "data": {
+                    "a": "123"
+                },
+                "valid": true
+            },
+            {
+                "description": "an invalid object",
+                "data": {
+                    "a": {
+                        "a": {
+                            "a": true
+                        }
+                    }
+                },
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains remote reference",
+        "path": "/v1/ref/3",
+        "method": "GET",
+        "schema": {
+            "$id": "ref3",
+            "type": "object",
+            "properties": {
+                "a": {
+                    "$ref": "ref2#/definitions/threeCharacterString"
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a valid object",
+                "data": {
+                    "a": "123"
+                },
+                "valid": true
+            },
+            {
+                "description": "an invalid object",
+                "data": {
+                    "a": {
+                        "a": {
+                            "a": true
+                        }
+                    }
+                },
+                "valid": false
+            }
+        ]
+    }
+]

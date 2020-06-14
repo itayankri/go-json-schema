@@ -1,0 +1,57 @@
+[
+    {
+        "description": "a json schema that contains 3 schema instanced in 'allOf' field",
+        "path": "/v1/anyOf",
+        "method": "GET",
+        "schema": {
+            "allOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "minLength": 4
+                },
+                {
+                    "maxLength": 4
+                }
+            ]
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "a valid string",
+                "data": "aaaa",
+                "valid": true
+            },
+            {
+                "description": "an object, which is not valid against the schema at index 0",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "a string that is not valid against the schema at index 1",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "a string that is not valid against the schema at index 2",
+                "data": "aaaaa",
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": false
+            }
+        ]
+    }
+]

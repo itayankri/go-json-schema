@@ -1,0 +1,56 @@
+[
+    {
+        "description": "a json schema that accepts only json arrays that contain at most 2 items, if the inspected value is an array",
+        "path": "/v1/maxItems",
+        "method": "GET",
+        "schema": {
+            "maxItems": 2
+        },
+        "tests": [
+            {
+                "description": "an empty json array",
+                "data": [],
+                "valid": true
+            },
+            {
+                "description": "a json array that contains 2 items",
+                "data": [1, 2],
+                "valid": true
+            },
+            {
+                "description": "a json array that contains 1 item",
+                "data": [1],
+                "valid": true
+            },
+            {
+                "description": "a json array that contains 3 items",
+                "data": [1, 2, 3],
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a string",
+                "data": "string",
+                "valid": true
+            },
+            {
+                "description": "a number",
+                "data": 4,
+                "valid": true
+            },
+            {
+                "description": "a json object that contains 3 properties",
+                "data": {
+                    "A": 1,
+                    "B": 2,
+                    "C": 3
+                },
+                "valid": true
+            }
+        ]
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "description": "a json schema that accepts object that contains a 3 character property names, if the inspected value is object",
+        "path": "/v1/propertyNames",
+        "method": "GET",
+        "schema": {
+            "propertyNames": {
+                "maxLength": 3,
+                "minLength": 3
+            }
+        },
+        "tests": [
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            },
+            {
+                "description": "a valid object",
+                "data": {"aaa": true, "bbb": false, "bla": 3},
+                "valid": true
+            },
+            {
+                "description": "an invalid object",
+                "data": {"a": 3},
+                "valid": false
+            },
+            {
+                "description": "an invalid object",
+                "data": {"aaa":4, "bbbb": 5},
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "an array with 4 character strings",
+                "data": ["1234", "6789"],
+                "valid": true
+            }
+        ]
+    }
+]

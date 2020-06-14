@@ -1,0 +1,168 @@
+[
+    {
+        "description": "a json schema that accepts everything except zero values",
+        "path": "/v1/not",
+        "method": "GET",
+        "schema": {
+            "not":{
+                "enum": [
+                    null, "", {}, [], 0, false
+                ]
+            }
+        },
+        "tests": [
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the number 0",
+                "data": 0,
+                "valid": false
+            },
+            {
+                "description": "an empty string",
+                "data": "",
+                "valid": false
+            },
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": false
+            },
+            {
+                "description": "the boolean \"false\"",
+                "data": false,
+                "valid": false
+            },
+            {
+                "description": "a non-empty array",
+                "data": [1, 2, 3],
+                "valid": true
+            },
+            {
+                "description": "a non-empty object",
+                "data": {"A": true},
+                "valid": true
+            },
+            {
+                "description": "a non-empty string",
+                "data": "s",
+                "valid": true
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": [1, 2, 3],
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts everything except to numbers greater than 100",
+        "path": "/v1/not",
+        "method": "GET",
+        "schema": {
+            "not":{
+                "type": "number",
+                "exclusiveMinimum": 100
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "the number 90",
+                "data": 90,
+                "valid": true
+            },
+            {
+                "description": "the number 100.00000",
+                "data": 100.00000,
+                "valid": true
+            },
+            {
+                "description": "the number 100.1",
+                "data": 100.1,
+                "valid": false
+            },
+            {
+                "description": "the number 1000",
+                "data": 1000,
+                "valid": false
+            },
+            {
+                "description": "the number 99.99",
+                "data": 99.99,
+                "valid": true
+            },
+            {
+                "description": "the string \"102\"",
+                "data": "102",
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only numbers",
+        "path": "/v1/not",
+        "method": "GET",
+        "schema": {
+            "not":{
+                "not": {
+                    "type": "number"
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the number 90",
+                "data": 90,
+                "valid": true
+            },
+            {
+                "description": "the number 100.00000",
+                "data": 100.00000,
+                "valid": true
+            },
+            {
+                "description": "the number 100.1",
+                "data": 100.1,
+                "valid": true
+            },
+            {
+                "description": "the number 1000",
+                "data": 1000,
+                "valid": true
+            },
+            {
+                "description": "the number 99.99",
+                "data": 99.99,
+                "valid": true
+            },
+            {
+                "description": "the string \"102\"",
+                "data": "102",
+                "valid": false
+            },
+            {
+                "description": "a json object",
+                "data": {"102": true},
+                "valid": false
+            }
+        ]
+    }
+]

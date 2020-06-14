@@ -1,0 +1,322 @@
+[
+    {
+        "description": "a json schema that accepts only the array [1, 2, 3, 4]",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": [1, 2, 3, 4]
+        },
+        "tests": [
+            {
+                "description": "[1, 2, 3, 4]",
+                "data": [1, 2, 3, 4],
+                "valid": true
+            },
+            {
+                "description": "[1, 2, 3, 4, 5]",
+                "data": [1, 2, 3, 4, 5],
+                "valid": false
+            },
+            {
+                "description": "'CAF is the shit'",
+                "data": "CAF is the shit",
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the number 1.11",
+                "data": 1.11,
+                "valid": false
+            },
+            {
+                "description": "{\"age\": 5}",
+                "data": {"age": 5},
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only the object {\"name\": \"Itay\"}",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": {"name": "Itay"}
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": true
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": false
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "the integer 1",
+                "data": 1,
+                "valid": false
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only the boolean \"true\"",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": true
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": false
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": false
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "the integer 1",
+                "data": 1,
+                "valid": false
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only null",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": null
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": true
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": true
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": true
+            },
+            {
+                "description": "the integer 1",
+                "data": 1,
+                "valid": true
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": true
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only the string \"CAF\"",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": "CAF"
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": false
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": false
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": true
+            },
+            {
+                "description": "the integer 1",
+                "data": 1,
+                "valid": false
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only the number 6.6",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": 6.6
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": false
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": false
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "the integer 1",
+                "data": 1,
+                "valid": false
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": true
+            },
+            {
+                "description": "the number 6.67",
+                "data": 6.67,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": false
+            }
+        ]
+    },
+    {
+        "description": "a json schema that accepts only the integer 99",
+        "path": "/v1/const",
+        "method": "GET",
+        "schema": {
+            "const": 99
+        },
+        "tests": [
+            {
+                "description": "{\"name\": \"Itay\"}",
+                "data": {"name": "Itay"},
+                "valid": false
+            },
+            {
+                "description": "[1, 2, 5]",
+                "data": [1, 2, 5],
+                "valid": false
+            },
+            {
+                "description": "\"CAF\"",
+                "data": "CAF",
+                "valid": false
+            },
+            {
+                "description": "the integer 99",
+                "data": 99,
+                "valid": true
+            },
+            {
+                "description": "the number 6.6",
+                "data": 6.6,
+                "valid": false
+            },
+            {
+                "description": "null",
+                "data": null,
+                "valid": false
+            },
+            {
+                "description": "the boolean \"true\"",
+                "data": true,
+                "valid": false
+            }
+        ]
+    }
+]

@@ -1,0 +1,57 @@
+[
+    {
+        "description": "a json schema that accepts only json arrays that contain unique items, if the inspected value is an array",
+        "path": "/v1/uniqueItems",
+        "method": "GET",
+        "schema": {
+            "uniqueItems": true
+        },
+        "tests": [
+            {
+                "description": "an array with one item",
+                "data": [1],
+                "valid": true
+            },
+            {
+                "description": "an array with two unique items",
+                "data": [1, 2],
+                "valid": true
+            },
+            {
+                "description": "an array with two similar items",
+                "data": [1, 1],
+                "valid": false
+            },
+            {
+                "description": "an array with items of different types",
+                "data": ["1", 1, true],
+                "valid": true
+            },
+            {
+                "description": "an array with two unique booleans",
+                "data": [true, false],
+                "valid": true
+            },
+            {
+                "description": "an array with two similar booleans",
+                "data": [true, false, true],
+                "valid": false
+            },
+            {
+                "description": "an array that contains a character and its ASCII number",
+                "data": ["0", 48],
+                "valid": true
+            },
+            {
+                "description": "an array that contains null and empty string",
+                "data": [null, ""],
+                "valid": true
+            },
+            {
+                "description": "an empty array",
+                "data": [],
+                "valid": true
+            }
+        ]
+    }
+]

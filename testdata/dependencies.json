@@ -1,0 +1,148 @@
+[
+    {
+        "description": "a json schema that contains property dependencies",
+        "path": "/v1/dependencies",
+        "method": "GET",
+        "schema": {
+            "dependencies": {
+                "a": ["b", "c"]
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json object that is not valid against the dependencies",
+                "data": {"a": true},
+                "valid": false
+            },
+            {
+                "description": "a json object that is valid against the dependencies",
+                "data": {"a": true, "b": true, "c": true},
+                "valid": true
+            },
+            {
+                "description": "a json object that contains only part of the required properties",
+                "data": {"a": true, "b": true},
+                "valid": true
+            },
+            {
+                "description": "a json object that contains only part of the required properties",
+                "data": {"a": true, "c": true},
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "an object that does not contain the property that triggers the dependency",
+                "data": {"b": true},
+                "valid": true
+            },
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains schema dependencies",
+        "path": "/v1/dependencies",
+        "method": "GET",
+        "schema": {
+            "dependencies": {
+                "a": {
+                    "minProperties": 2
+                }
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json object that is not valid against the schema in the dependency",
+                "data": {"a": true},
+                "valid": false
+            },
+            {
+                "description": "a json object that is valid against the schema in the dependency",
+                "data": {"a": true, "b": false},
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "an object that does not contain the property that triggers the dependency",
+                "data": {"b": true},
+                "valid": true
+            },
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "a json schema that contains property dependencies and schema dependencies",
+        "path": "/v1/dependencies",
+        "method": "GET",
+        "schema": {
+            "dependencies": {
+                "a": {
+                    "maxProperties": 2
+                },
+                "b": ["a"]
+            }
+        },
+        "tests": [
+            {
+                "description": "null",
+                "data": null,
+                "valid": true
+            },
+            {
+                "description": "a json object that is not valid against the schema in the schema dependency",
+                "data": {"a": true},
+                "valid": false
+            },
+            {
+                "description": "a json object that is not valid against the schema in the property dependency",
+                "data": {"b": true},
+                "valid": false
+            },
+            {
+                "description": "a json object that is valid against the dependencies",
+                "data": {"a": true, "b": false},
+                "valid": true
+            },
+            {
+                "description": "a json string",
+                "data": "bla",
+                "valid": true
+            },
+            {
+                "description": "an object that does not contain the property that triggers the dependencies",
+                "data": {"c": true},
+                "valid": true
+            },
+            {
+                "description": "an empty object",
+                "data": {},
+                "valid": true
+            }
+        ]
+    }
+]
