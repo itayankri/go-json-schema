@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/itayankri/go-jsonvalidator/formatchecker"
+	"github.com/itayankri/gojsonvalidator/formatchecker"
 )
 
 /*

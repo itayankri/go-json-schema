@@ -2,8 +2,7 @@ package formatchecker_test
 
 import (
 	"testing"
-
-	"github.com/omeryahud/caf/internal/pkg/validators/formatchecker"
+	"github.com/itayankri/gojsonvalidator/formatchecker"
 )
 
 type test struct {

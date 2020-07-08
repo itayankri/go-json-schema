@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/itayankri/go-jsonvalidator"
+	"github.com/itayankri/gojsonvalidator/jsonpointer"
 	"github.com/pkg/errors"
 )
 
