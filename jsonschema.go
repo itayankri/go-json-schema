@@ -3,10 +3,8 @@ package jsonvalidator
 import (
 	"encoding/json"
 	"fmt"
-
 	"strconv"
 	"strings"
-
 	"github.com/itayankri/gojsonvalidator/jsonpointer"
 	"github.com/pkg/errors"
 )
